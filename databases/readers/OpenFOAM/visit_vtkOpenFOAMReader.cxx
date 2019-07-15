@@ -6417,7 +6417,7 @@ void visit_vtkOpenFOAMReaderPrivate::InterpolateCellToPoint(vtkFloatArray *pData
   vtkCellLinks *cl = NULL;
   if (ug)
     {
-    cl = vtkCellLinks::SafeDownCast(ug->GetCellLinks());
+    cl = ug->GetCellLinks();
     }
 
   const int nComponents = iData->GetNumberOfComponents();
@@ -6429,7 +6429,7 @@ void visit_vtkOpenFOAMReaderPrivate::InterpolateCellToPoint(vtkFloatArray *pData
     for (int pointI = 0; pointI < nPoints; pointI++)
       {
       const int pI = (pointList ? pointList->GetValue(pointI) : pointI);
-      vtkIdType nCells;
+      unsigned short nCells;
       vtkIdType *cells;
       if (cl)
         {
@@ -6459,7 +6459,7 @@ void visit_vtkOpenFOAMReaderPrivate::InterpolateCellToPoint(vtkFloatArray *pData
     for (int pointI = 0; pointI < nPoints; pointI++)
       {
       const int pI = (pointList ? pointList->GetValue(pointI) : pointI);
-      vtkIdType nCells;
+      unsigned short nCells;
       vtkIdType *cells;
       if (cl)
         {
@@ -6496,7 +6496,7 @@ void visit_vtkOpenFOAMReaderPrivate::InterpolateCellToPoint(vtkFloatArray *pData
     for (int pointI = 0; pointI < nPoints; pointI++)
       {
       const int pI = (pointList ? pointList->GetValue(pointI) : pointI);
-      vtkIdType nCells;
+      unsigned short nCells;
       vtkIdType *cells;
       if (cl)
         {
