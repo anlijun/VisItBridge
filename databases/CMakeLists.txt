@@ -146,6 +146,7 @@ get_property(visit_db_headers GLOBAL PROPERTY _visit_db_headers)
 get_property(visit_include_dirs GLOBAL PROPERTY _visit_db_include_dirs)
 
 vtk_module_add_module(ParaView::IOVisItBridge
+  HEADER_DIRECTORIES
   SPDX_SKIP_REGEX ".*"
   CLASSES ${classes}
   SOURCES ${visit_server_sources} ${visit_db_sources}
@@ -155,6 +156,7 @@ vtk_module_include(ParaView::IOVisItBridge
   PUBLIC
     "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/AvtAlgorithms>"
     "$<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>"
+    "$<INSTALL_INTERFACE:${_vtk_build_HEADERS_DESTINATION}/AvtAlgorithms>"
   PRIVATE
     ${visit_include_dirs})
 
